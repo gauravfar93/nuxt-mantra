@@ -1,27 +1,25 @@
-<template> 
-    <div>
-        <!-- <p>Product details from {{ id }}</p>
+<template>
+  <div>
+    <!-- <p>Product details from {{ id }}</p>
         <p>Lorem</p> -->
-        <p>{{ product.title }}</p>
-        <p>{{ product.price }}</p>
-        <p>{{ product.id }}</p>
-    </div>
-    
-    </template>
-    
-    <script setup>
-    const {id} = useRoute().params
-    const url = 'https://fakestoreapi.com/products/' + id
+    <img :src="product.image" alt="product image" />
+    <p>{{ product.title }}</p>
+    <p>{{ product.price }}</p>
+    <p>{{ product.id }}</p>
+  </div>
+</template>
 
-    //fetching the product detail
+<script setup>
+const { id } = useRoute().params;
+const url = "https://fakestoreapi.com/products/" + id;
 
-    const {data: product} = await useFetch(url, {key:id} )
+//fetching the product detail
 
-    definePageMeta({
-    layout: 'products'
-})
-    </script>
-    
-    <style scoped>
-    
-    </style>
+const { data: product } = await useFetch(url, { key: id });
+
+definePageMeta({
+  layout: "products",
+});
+</script>
+
+<style scoped></style>
